@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Tensile Strength Prediction of Austenitic stainless steel</title>
+</head>
+
+<body>
+    <h1>Ultimate Tensile Strength Prediction of Austenitic Stainless Steel</h1>
+    <div>
+        <form action="{{url_for('predict')}}" method="post">
+            
+            <h3>Molybdenum</h3>
+		    <input type="text" name="Mo" placeholder="weight in %" required="required" />
+
+            <h3>Manganese</h3>
+		    <input type="text" name="Mn" placeholder="weight in %" required="required" />
+
+            <h3>Silicon</h3>
+		    <input type="text" name="Si" placeholder="weight in %" required="required" />
+
+            <h3>Niobium</h3>
+		    <input type="text" name="Nb" placeholder="weight in %" required="required" />
+
+            <h3>Titanium</h3>
+		    <input type="text" name="Ti" placeholder="weight in %" required="required" />
+            
+            <h3>Vanadium</h3>
+		    <input type="text" name="V" placeholder="weight in %" required="required" />
+
+            <h3>Copper</h3>
+		    <input type="text" name="Cu" placeholder="weight in %" required="required" />
+
+            <h3>Nitrogen</h3>
+		    <input type="text" name="N" placeholder="weight in %" required="required" />
+
+            <h3>Carbon</h3>
+		    <input type="text" name="C" placeholder="weight in %" required="required" />
+
+            <h3>Boron</h3>
+		    <input type="text" name="B" placeholder="weight in %" required="required" />
+
+            <h3>Phosphorus</h3>
+		    <input type="text" name="P" placeholder="weight in %" required="required" />
+
+            <h3>Sulphur</h3>
+		    <input type="text" name="S" placeholder="weight in %" required="required" />
+
+            <h3>Cobalt</h3>
+		    <input type="text" name="Co" placeholder="weight in %" required="required" />
+
+            <h3>Aluminium</h3>
+		    <input type="text" name="Al" placeholder="weight in %" required="required" />
+
+            <h3>Solution treatment temperature</h3>
+		    <input type="text" name="Solution_treatment_temperature" placeholder="in Kelvin" required="required" />
+		    
+			<h3>Solution treatment time</h3>
+		    <input type="text" name="Solution_treatment_time(s)" placeholder="in seconds" required="required" />
+            
+            <h3>Water quenched after solution treatment?</h3>
+            <select name="Water_Quenched_after_s.t." id="Water quenched?" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <h3>Temperature</h3>
+		    <input type="text" name="Temperature (K)" placeholder="in Kelvin" required="required" />
+            	
+            <br><br><button id="sub" type="submit ">Prediction</button>
+            <br>
+
+        </form>
+
+
+        <br><br>
+		{{ prediction_text }}
+    </div>
+  
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Tensile Strength Prediction</title>
+    <title>Austenitic Stainless Steel</title>
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/491920670/photo/laboratory-equipment-tensile-strenght-analysis.jpg?s=612x612&w=0&k=20&c=BTdtelDwhBY2pTUlJDNPv9_27aRS1uEYD7Kd6CslUZI=');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group select {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-size: 14px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        .form-group button {
+            background-color: light green;
+            border: none;
+            border-radius: 3px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .prediction {
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color:Black; background-color:powderblue;">Ultimate Tensile Strength Prediction of Austenitic Stainless Steel</h1>
+    <div class="container">
+        <form action="{{url_for('predict')}}" method="post">
+            <div class="form-group">
+                <label for="Mo">Molybdenum</label>
+                <input type="text" name="Mo" id="Mo" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Mn">Manganese</label>
+                <input type="text" name="Mn" id="Mn" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Si">Silicon</label>
+                <input type="text" name="Si" id="Si" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Nb">Niobium</label>
+                <input type="text" name="Nb" id="Nb" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Ti">Titanium</label>
+                <input type="text" name="Ti" id="Ti" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="V">Vanadium</label>
+                <input type="text" name="V" id="V" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Cu">Copper</label>
+                <input type="text" name="Cu" id="Cu" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="N">Nitrogen</label>
+                <input type="text" name="N" id="N" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="C">Carbon</label>
+                <input type="text" name="C" id="C" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="B">Boron</label>
+                <input type="text" name="B" id="B" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="P">Phosphorus</label>
+                <input type="text" name="P" id="P" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="S">Sulphur</label>
+                <input type="text" name="S" id="S" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Co">Cobalt</label>
+                <input type="text" name="Co" id="Co" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Al">Aluminium</label>
+                <input type="text" name="Al" id="Al" placeholder="Weight in %" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Solution_treatment_temperature">Solution treatment temperature</label>
+                <input type="text" name="Solution_treatment_temperature" id="Solution_treatment_temperature" placeholder="In Kelvin" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Solution_treatment_time">Solution treatment time</label>
+                <input type="text" name="Solution_treatment_time" id="Solution_treatment_time" placeholder="In seconds" required="required" />
+            </div>
+
+            <div class="form-group">
+                <label for="Water_Quenched_after_s.t.">Water quenched after solution treatment?</label>
+                <select name="Water_Quenched_after_s.t." id="Water_Quenched_after_s.t." required="required">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Temperature">Temperature</label>
+                <input type="text" name="Temperature" id="Temperature" placeholder="In Kelvin" required="required" />
+            </div>
+
+            <button style="background-color:powderblue;" type="submit">Prediction</button>
+        </form>
+
+        <div class="prediction">
+            <p>{{ prediction_text }}</p>
+        </div>
+    </div>
+</body>
+
+</html>
